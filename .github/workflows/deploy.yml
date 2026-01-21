@@ -25,5 +25,9 @@ jobs:
           script: |
             # Clear old website
             sudo rm -rf /var/www/html/*
+            ls -la /var/www/html/
+            echo "Checked after Directory Removal"
             # Copy new files
             sudo cp -r * /var/www/html/
+            ls -la /var/www/html/
+            echo "Checked after Copying Files Removal"
