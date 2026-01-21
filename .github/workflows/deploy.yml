@@ -24,6 +24,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             # Clear old website
-            rm -rf /var/www/html/*
+            sudo rm -rf /var/www/html/*
             # Copy new files
-            cp -r * /var/www/html/
+            sudo cp -r * /var/www/html/
