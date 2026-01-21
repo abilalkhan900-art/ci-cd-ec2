@@ -1,0 +1,29 @@
+name: Deploy CI/CD Website to EC2
+
+# Trigger workflow on any push to main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout your GitHub repo code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Deploy to EC2 using SSH
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            # Clear old website
+            rm -rf /var/www/html/*
+            # Copy new files
+            cp -r * /var/www/html/
