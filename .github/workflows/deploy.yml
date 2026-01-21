@@ -38,7 +38,6 @@ jobs:
             sudo rm -rf /var/www/html/*
             echo "Cleared /var/www/html/"
             # Copy new files from /tmp
-            sudo cp /tmp/index.html /var/www/html/
-            sudo chown -R www-data:www-data /var/www/html/
+            sudo cp $REPO_DIR/index.html /var/www/html/
             ls -la /var/www/html/
             echo "Files copied and deployed successfully"
